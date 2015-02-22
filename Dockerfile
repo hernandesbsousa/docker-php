@@ -20,5 +20,11 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 COPY etc /etc
+
+# Install Composer
+RUN php -r "readfile('https://getcomposer.org/installer');" | php \
+    && \
+    mv composer.phar /usr/local/bin/composer
+
 EXPOSE 9000
 CMD ["php5-fpm"]
