@@ -17,7 +17,8 @@ RUN apt-get update && \
         php5-fpm \
         php5-gd \
         php5-mysql \
-         && \
+        msmtp \
+        && \
     rm -rf /var/lib/apt/lists/*
 
 COPY etc /etc
