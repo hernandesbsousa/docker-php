@@ -1,4 +1,5 @@
 FROM debian:wheezy
+MAINTAINER Hernandes Benevides de Sousa
 
 # Install from dotdeb
 RUN apt-key adv --keyserver keyserver.ubuntu.com --recv-keys 89DF5277
