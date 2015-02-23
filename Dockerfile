@@ -21,8 +21,6 @@ RUN apt-get update && \
         && \
     rm -rf /var/lib/apt/lists/*
 
-COPY etc /etc
-
 # Install Composer
 RUN php -r "readfile('https://getcomposer.org/installer');" | php \
     && \
@@ -30,3 +28,9 @@ RUN php -r "readfile('https://getcomposer.org/installer');" | php \
 
 EXPOSE 9000
 CMD ["php5-fpm"]
+
+# Setup php.ini
+RUN echo "[mail function]" >> /etc/php5/fpm.php.ini
+RUN echo "sendmail_path = /usr/bin/msmtp -t -i" >> /etc/php5/fpm.php.ini
+
+COPY etc /etc
